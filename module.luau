@@ -1,5 +1,5 @@
 --[[
-Provides functions to calculate the smallest representable difference (Unit in the Last Place/Unit of Least Precision, ULP) near a given number using different float precisions.
+Provides functions to calculate the smallest representable difference (Unit in the Last Place/Unit of Least Precision, ULP) near a given number of various float precisions.
 ]]
 
 local floatPrecision = {}
