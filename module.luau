@@ -19,7 +19,7 @@ end
 --[[
 Calculates and returns the ULP (smallest representable difference) for the given FP32 (single) number.
 ]]
-function floatPrecision.ulp_fp32(x: number, allowInoperable: boolean): number
+function floatPrecision.ulp_fp32(x: number): number
 	if x == 0 then
 		return 2^-126
 	end
