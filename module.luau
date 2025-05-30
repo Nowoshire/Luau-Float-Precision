@@ -9,7 +9,7 @@ Calculates and returns the ULP (smallest representable difference) for the given
 ]]
 function floatPrecision.ulp_fp16(x: number): number
 	if x == 0 then
-		return 2^-24 -- 2^(-14 - 10)
+		return 2^-24
 	end
 	
 	-- 2 ^ (exponent - mantissa bits)
@@ -19,9 +19,9 @@ end
 --[[
 Calculates and returns the ULP (smallest representable difference) for the given FP32 (single) number.
 ]]
-function floatPrecision.ulp_fp32(x: number): number
+function floatPrecision.ulp_fp32(x: number, allowInoperable: boolean): number
 	if x == 0 then
-		return 1.401298464e-45 -- 2^-149
+		return 2^-126
 	end
 	
 	-- 2 ^ (exponent - mantissa bits)
@@ -30,17 +30,10 @@ end
 
 --[[
 Calculates and returns the ULP (smallest representable difference) for the given FP64 (double) number.
-
-<code>correctZeroSignificand</code> determines whether to return 2^−1074 when <code>x</code> is <code>0</code>.
-When x = 0 and <code>correctZeroSignificand</code> is truthy, 2^−1074 will be returned otherwise 2^-1022 (the smallest value that operations can be performed on) will be returned.
-
-<strong>NOTE:</strong> Attempting to perform calculations with the corrected value will result in it rounding to <code>0</code> due to insufficient precision.
 ]]
-function floatPrecision.ulp_fp64(x: number, correctZeroSignificand: boolean?): number
+function floatPrecision.ulp_fp64(x: number): number
 	if x == 0 then
-		return if correctZeroSignificand then
-			4.94065645841247e-324 -- 2^-1074
-		else 2^-1022
+		return 2^-1022
 	end
 	
 	-- 2 ^ (exponent - mantissa bits)
